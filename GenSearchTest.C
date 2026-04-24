@@ -40,9 +40,9 @@ Point curr_query;
 // this one implements L1
 float User_Distance(Point *p1, Point *p2)
 {
- register int i;
- register float running=0.0;
- register float distance;
+ int i;
+ float running=0.0;
+ float distance;
  for(i=0; i<NUMDIMS; i++)
    running+=(p1->position[i]-p2->position[i])*(p1->position[i]-p2->position[i]);
    // running+=fabs(p1->position[i]-p2->position[i]);

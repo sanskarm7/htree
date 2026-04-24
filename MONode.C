@@ -148,7 +148,7 @@ void MONode::FillPickList(Point *r, int currRoot, struct kdTreeLeafInfo *picklis
 //
 int MONode::PickChild(Point *R, Rect *parentNodeRect, Rect *childNodeRect)
 {
-  register Point *r = R;
+  Point *r = R;
   struct kdTreeLeafInfo picklist[MONODECARD];
   int pickcount=0;
   float minvol = 99999999.0;
@@ -198,8 +198,8 @@ int MONode::PickChild(Point *R, Rect *parentNodeRect, Rect *childNodeRect)
 //
 int MONode::AddChild(Node *newChildNode, MONode **New_node, int kdTreeLeafIndex, struct split* childNodeSplit, struct split **kdTreeSplit, Rect *indexedRegion)
 {	
-  register MONode **new_node = New_node;
-  register int i, parent;
+  MONode **new_node = New_node;
+  int i, parent;
 
 
   parent=leaf[kdTreeLeafIndex].parent;
@@ -543,7 +543,7 @@ struct numleaves MONode::GetNumLeavesInSubtree(struct MOnode_split_info *splitIn
 
 int MONode::GetNextMOkdTreeNode(int option, int currnodeptr, struct MOnode_split_info *splitInfo)
 {
-  register int ptr = currnodeptr;
+  int ptr = currnodeptr;
   struct numleaves leafInfo;
 
   assert(ptr < (MONODECARD-1));   /* pointing to an internal node */
@@ -846,7 +846,7 @@ void MONode::GuaranteedAssessSplits(struct MOnode_split_info *split_choice_array
 
 void MONode::SplitNode(MONode **nn, struct split **newSplit, Rect *indexedRegion)
 {
-  register int i,h,z;
+  int i,h,z;
   unsigned int splitnode;
   Rect OverlappingRegion;
   unsigned int splitDimension;
@@ -923,7 +923,7 @@ void MONode::SplitNode(MONode **nn, struct split **newSplit, Rect *indexedRegion
   assert((numLeafNodes+(*nn)->numLeafNodes)== MONODECARD);
 #ifdef HTREE_DEBUG
   printf("MONode split (***** Minimal Overlap *****): split dimension = %d split position left = %f split position right = %f\n", split_choice_array[i].splitdim, split_choice_array[i].splitpos1, split_choice_array[i].splitpos2);
-#endif HTREE_DEBUG
+#endif
 }
 
 

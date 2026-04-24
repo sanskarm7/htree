@@ -36,9 +36,9 @@ HTree *h;
 // this one implements L1
 float User_Distance(Point *p1, Point *p2)
 {
- register int i;
- register float running=0.0;
- register float distance;
+ int i;
+ float running=0.0;
+ float distance;
  for(i=0; i<NUMDIMS; i++)
    running+=(p1->position[i]-p2->position[i])*(p1->position[i]-p2->position[i]);
    // running+=fabs(p1->position[i]-p2->position[i]);
@@ -191,7 +191,7 @@ int main(int argc, char **argv)
   printf ("Fanout of overlap minimal index nodes is %d ***************\n", MONODECARD);
   printf("sizeof(struct ELS) = %d\n", sizeof(struct ELS));
   printf ("Size of a kdtree leaf node with els %d **********\n", kdTreeLeafNodewithELSSize);
-#endif HTREE_DEBUG
+#endif
 
     if (argc < 4)
     {

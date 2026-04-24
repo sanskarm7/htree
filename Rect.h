@@ -11,6 +11,7 @@
 #ifndef RECT_H
 #define RECT_H
 
+#include <stdio.h>
 #include "decl.h"
 #include "Point.h"
 #include "MultiPointQuery.h"

@@ -53,8 +53,8 @@ int HTree::Search(MultiPointQuery *mpq, float range, float (*User_Distance) (Poi
 //
 int HTree::HTreeSearch(Node *n, MultiPointQuery *mpq, float distance, int dist_func, long *diskacc, Rect *indexedRegion, Result *res, int max_returned)
 {
-	register int hitCount = 0;
-	register int i;
+	int hitCount = 0;
+	int i;
 	// int visitlist[OFNODECARD];
 	struct region visitlist[OFNODECARD];
 	int visitcount=0;
@@ -129,8 +129,8 @@ int HTree::HTreeSearch(Node *n, MultiPointQuery *mpq, float distance, int dist_f
 //
 int HTree::HTreeSearch(Node *n, MultiPointQuery *mpq, float distance, float (*User_Distance) (Point *, Point *), long *diskacc, Rect *indexedRegion, Result *res, int max_returned)
 {
-	register int hitCount = 0;
-	register int i;
+	int hitCount = 0;
+	int i;
 	// int visitlist[OFNODECARD];
 	struct region visitlist[OFNODECARD];
 	int visitcount=0;
@@ -200,9 +200,9 @@ int HTree::HTreeSearch(Node *n, MultiPointQuery *mpq, float distance, float (*Us
 
 int HTree::HTreeSearch(Node *n, Rect *R, long *diskacc, Result *res, int max_returned)
 {
-	register Rect *r = R;
-	register int hitCount = 0;
-	register int i;
+	Rect *r = R;
+	int hitCount = 0;
+	int i;
 	int visitlist[OFNODECARD];
 	int visitcount=0;
 	int MOvisitlist[MONODECARD];

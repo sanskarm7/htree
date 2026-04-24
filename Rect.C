@@ -23,7 +23,7 @@
 
 Rect::Rect()
 {
-  register int i;
+  int i;
   for (i=0; i<NUMSIDES; i++)
     boundary[i] = (RectReal)0;
 }
@@ -33,7 +33,7 @@ Rect::~Rect(){
 
 void Rect::Init()
 {
-  register int i;
+  int i;
   for (i=0; i<NUMSIDES; i++)
     boundary[i] = (RectReal)0;
 }
@@ -108,7 +108,7 @@ Point Rect::Center()
 
 void Rect::Print()
 {
-  register int i;
+  int i;
   
   printf("rect:\n");
   for (i = 0; i < NUMDIMS; i++) {
@@ -119,8 +119,8 @@ void Rect::Print()
 
 RectReal Rect::Volume()
 {
-  register int i;
-  register RectReal volume = (RectReal)1;
+  int i;
+  RectReal volume = (RectReal)1;
   
   for(i=0; i<NUMDIMS; i++)
     volume *= boundary[i+NUMDIMS] - boundary[i];
@@ -131,8 +131,8 @@ RectReal Rect::Volume()
 
 Rect Rect::CombineRect(Rect *Rr)
 {
-  register Rect *rr = Rr;
-  register int i,j;
+  Rect *rr = Rr;
+  int i,j;
   Rect new_rect;
   
   for (i = 0; i < NUMDIMS; i++)
@@ -147,7 +147,7 @@ Rect Rect::CombineRect(Rect *Rr)
 
 Rect Rect::CombineRect(Point *r)
 {
-  register int i, j;
+  int i, j;
   Rect new_rect;
   
   for (i = 0; i < NUMDIMS; i++)
@@ -162,8 +162,8 @@ Rect Rect::CombineRect(Point *r)
 
 int Rect::Overlap(Rect *S)
 {
-  register Rect *s = S;
-  register int i, j;
+  Rect *s = S;
+  int i, j;
   
   for (i=0; i<NUMDIMS; i++)
     {
@@ -177,8 +177,8 @@ int Rect::Overlap(Rect *S)
 
 int Rect::Overlap(Point *S)
 {
-  register Point *s = S;
-  register int i, j;
+  Point *s = S;
+  int i, j;
 
   for (i=0; i<NUMDIMS; i++)
     {
@@ -192,11 +192,11 @@ int Rect::Overlap(Point *S)
 
 float Rect::Distance(Point *P, int dist_func)
 {
-  register Point *p = P;
-  register float distance;
-  register float diff;
-  register float running=0.0;
-  register int i;
+  Point *p = P;
+  float distance;
+  float diff;
+  float running=0.0;
+  int i;
 
   switch(dist_func)
     {
@@ -244,6 +244,10 @@ float Rect::Distance(Point *P, int dist_func)
             }
         }
       return running;
+
+    default:
+      assert(false); /* unknown dist_func -- should never reach here */
+      return 0.0;
     }
 }
 
@@ -312,9 +316,9 @@ int Rect::Overlap(MultiPointQuery *mpq, float max_distance, float (*User_Distanc
 
 float Rect::AmountOfOverlap(Rect *S)
 {
-  register Rect *s = S;
-  register int i, j;
-  register float overlap=1.0;
+  Rect *s = S;
+  int i, j;
+  float overlap=1.0;
  
   for (i=0; i<NUMDIMS; i++)
     {
@@ -329,8 +333,8 @@ float Rect::AmountOfOverlap(Rect *S)
 
 int Rect::Contained(Rect *S)
 {
-  register Rect *s = S;
-  register int i, j, result;
+  Rect *s = S;
+  int i, j, result;
   
   result = TRUE;
   for (i = 0; i < NUMDIMS; i++)
@@ -419,11 +423,11 @@ void Rect::DecodeLiveSpace(unsigned int *ELSarray, Rect *totalspace)
 /*
 float Rect::MaxDist(Point *P, int dist_func)
 {
-  register Point *p = P;
-  register float distance;
-  register float diff;
-  register float running=0.0;
-  register int i;
+  Point *p = P;
+  float distance;
+  float diff;
+  float running=0.0;
+  int i;
 
   switch(dist_func)
     {

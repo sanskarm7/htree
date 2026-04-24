@@ -76,7 +76,7 @@ void DataNode::Print() {
 }
 
 Rect DataNode::Cover() {
-  register int i, first_time = 1;
+  int i, first_time = 1;
   Rect r;
 
   for (i = 0; i < count; i++)
@@ -126,7 +126,7 @@ int splitcmp(struct dimspread *a, struct dimspread *b) {
 
 struct split DataNode::MaxExtentBisectionSplit() {
   Rect coverRect;
-  register int i, j, k;
+  int i, j, k;
   struct dimspread spreads[NUMDIMS];
   float projection[NODECARD];
   float maxextent = -1.0;
@@ -188,6 +188,8 @@ struct split DataNode::MaxExtentBisectionSplit() {
       return bestSplit;
     }
   }
+  assert(false); /* a valid split should always be found before reaching here */
+  return bestSplit;
 }
 
 void DataNode::TransferFrom(DataNode *src) {
@@ -255,13 +257,13 @@ void DataNode::SplitNode(DataNode **nn, struct split **newSplit) {
 #ifdef HTREE_DEBUG
   // printf("DataNode split (***** Overlap Free *****): split dimension = %d
   // split position = %f \n", bestSplit.splitDim, bestSplit.splitPos);
-#endif HTREE_DEBUG
+#endif
 }
 
 int DataNode::ComputeNumReinsertions(unsigned int splitdimension,
                                      float splitposition,
                                      int *num_reinsertions) {
-  register int i;
+  int i;
   struct Branch b;
   int leftcount = 0, rightcount = 0;
 
@@ -296,7 +298,7 @@ int DataNode::ComputeReinsertions(unsigned int splitdimension,
                                   ReinsertItem *reinsertion_list,
                                   int *num_points_in_list) {
   int leftcount = 0, rightcount = 0;
-  register int i;
+  int i;
   DataNode *replacementNode;
   int target;
 
@@ -367,7 +369,7 @@ void DataNode::DistributeDataItems(Node *NN, unsigned int splitdimension,
   DataNode *replacementNode;
   DataNode *nn = (DataNode *)NN;
   int target;
-  register int i;
+  int i;
 
   assert(nn);
   assert(nn->type == Node::DATANODE);
@@ -397,7 +399,7 @@ void DataNode::DistributeDataItems(Node *NN, unsigned int splitdimension,
 // <splitdimension, splitosition>, would any of the groups be empty
 int DataNode::IsEmptyPartition(unsigned int splitdimension, float splitposition,
                                int option) {
-  register int i;
+  int i;
   int empty = 1;
 
   if (option == LEFT) // is the left partition empty??
@@ -449,7 +451,7 @@ Rect DataNode::CreateELS(unsigned int *ELSarray, Rect *totalspace) {
 // compute the radius of the data node given the centroid
 
 float DataNode::Radius(Point *centroid) {
-  register int i;
+  int i;
   float distance, radius;
 
   radius = 0.0;

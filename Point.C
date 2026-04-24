@@ -19,7 +19,7 @@
 
 Point::Point()
 {
-  register int i;
+  int i;
   for (i=0; i<NUMDIMS; i++)
     position[i] = (PointReal)0;
 }
@@ -29,7 +29,7 @@ Point::~Point(){
 
 void Point::Init()
 { 
-  register int i;
+  int i;
   for (i=0; i<NUMDIMS; i++)
     position[i] = (PointReal)0;
 }
@@ -102,7 +102,7 @@ void Point::At(int i, PointReal value)
 Rect Point::ToRect()
 {
   Rect R;
-  register int i;
+  int i;
   for(i=0; i<NUMDIMS; i++)
     {
       R.Low(i, position[i]);
@@ -114,7 +114,7 @@ Rect Point::ToRect()
 
 void Point::Print()
 {
-  register int i;
+  int i;
 
   printf("point:\n");
   for (i = 0; i < NUMDIMS; i++) {
@@ -125,11 +125,11 @@ void Point::Print()
 
 float Point::Distance(Point *P, int dist_func)
 {
-  register Point *p = P;
-  register float diff;
-  register float distance;
-  register float running=0.0;
-  register int i;
+  Point *p = P;
+  float diff;
+  float distance;
+  float running=0.0;
+  int i;
 
   switch(dist_func)
     {
@@ -156,6 +156,10 @@ float Point::Distance(Point *P, int dist_func)
           if (running < diff) running=diff;
         }
       return running;
+
+    default:
+      assert(false); /* unknown dist_func -- should never reach here */
+      return 0.0;
     }
 }
 
@@ -169,7 +173,7 @@ return User_Distance(this, P); // invoke user-specified distance function
 
 int Point::Overlap(Point *P, float max_distance, int dist_func)
 {
-  register Point *p = P; 
+  Point *p = P; 
   
   if (Distance(p, dist_func) > max_distance) return FALSE;
   else return TRUE;
@@ -177,7 +181,7 @@ int Point::Overlap(Point *P, float max_distance, int dist_func)
 
 int Point::Overlap(Point *P, float max_distance, float (*User_Distance) (Point *, Point *))
 {
-  register Point *p = P;
+  Point *p = P;
 
   if (User_Distance(this, p) > max_distance) return FALSE;
   else return TRUE;

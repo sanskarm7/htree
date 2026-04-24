@@ -94,7 +94,7 @@ int HTree::Scan(Query *query)
 
 int HTree::GetkNext(PQ *queue, MultiPointQuery *MPQ, float (*User_Distance) (Point *, Point *), long *diskacc, int k, Result *res)
 {
-	register int i;
+	int i;
 	Rect childRectlist[OFNODECARD];
 	Rect MOchildRectlist[MONODECARD];
 	int sofar=0;
@@ -157,7 +157,7 @@ int HTree::GetkNext(PQ *queue, MultiPointQuery *MPQ, float (*User_Distance) (Poi
 
 int HTree::GetkNext(PQ *queue, MultiPointQuery *MPQ, int dist_func, long *diskacc, int k, Result *res)
 {
-	register int i;
+	int i;
 	Rect childRectlist[OFNODECARD];
 	Rect MOchildRectlist[MONODECARD];
 	int sofar=0;
